@@ -1,5 +1,9 @@
 {
   "ERR_INTERNAL_SERVER": "Internal Server Error.",
   "ERR_URL_NOT_FOUND": "Requested URL not found!",
-  "ERR_GENRIC_SYNTAX": "JSON request could not be parsed."
+  "ERR_GENRIC_SYNTAX": "JSON request could not be parsed.",
+  "DATE_NOT_VALID": "End date should be greater than Start date",
+  "EVENT_ADDED": "Event Added Successfully.",
+  "EVENT_UPDATED": "Event updated Successfully.",
+  "EVENT_DELETED": "Event deleted Successfully."
 }
