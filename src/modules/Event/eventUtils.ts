@@ -35,7 +35,7 @@ export class EventUtils {
                 whereQuery += ` AND (title LIKE '%${title}%')`;
             }
             const joinQuery = `${Tables.EVENT} e LEFT JOIN ${Tables.CATEGORY} c ON e.Category = c.id`
-            const { result, count } = await My.findAllWithCount(joinQuery, 'e.id', ['e.id', 'e.Title','e.Description','c.Category'], `${whereQuery}`, ` ${limitQuery}`);
+            const { result, count } = await My.findAllWithCount(joinQuery, 'e.id', ['e.id', 'e.Title','e.Description','c.Category','e.Start_date','e.End_date'], `${whereQuery}`, ` ${limitQuery}`);
             return ({Result: result, TotalRows: count});
         } catch (err) {
             console.error(err);
@@ -64,12 +64,22 @@ export class EventUtils {
     }
 
     //delete event
-    public async deleteEvent(id) {
+    public async deleteEvent(id: number) {
          try {
              return await My.delete(Tables.EVENT, 'id = ?', [id]);
          } catch (err) {
             console.error(err);
             throw err;
          }
+    }
+
+    //get dates
+    public async getDates(id: number){
+        try {
+            return await My.first(Tables.EVENT,['id','Start_date','End_date'],'id = ?',[id]);
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
     }
 }

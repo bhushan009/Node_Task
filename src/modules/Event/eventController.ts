@@ -58,4 +58,145 @@ export class EventController {
             return res.status(Constants.INTERNAL_SERVER_ERROR_CODE).send({ error: req.t("ERR_INTERNAL_SERVER") });
         }
     }
+
+    public viewEvent = async(req: any, res: Response) => {
+        try {
+            const dates = await this.eventUtils.getDates(req.params.id);
+            let dateArr = [];
+            if(req.body.Interval == 'Every' && req.body.Time == 'day') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(1, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every' && req.body.Time == 'week') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(7, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every' && req.body.Time == 'month') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(1, 'month');
+                }
+            }
+            if(req.body.Interval == 'Every' && req.body.Time == 'year') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(1, 'years');
+                }
+            }
+            //Every Other days
+            if(req.body.Interval == 'Every Other' && req.body.Time == 'day') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(2, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Other' && req.body.Time == 'week') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(14, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Other' && req.body.Time == 'month') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(2, 'month');
+                }
+            }
+            if(req.body.Interval == 'Every Other' && req.body.Time == 'year') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(2, 'years');
+                }
+            }
+            //Every Third
+            if(req.body.Interval == 'Every Third' && req.body.Time == 'day') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(3, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Third' && req.body.Time == 'week') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(28, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Third' && req.body.Time == 'month') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(3, 'month');
+                }
+            }
+            if(req.body.Interval == 'Every Third' && req.body.Time == 'year') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(3, 'years');
+                }
+            }
+            //Every Fourth
+            if(req.body.Interval == 'Every Fourth' && req.body.Time == 'day') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(4, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Fourth' && req.body.Time == 'week') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(29, 'days');
+                }
+            }
+            if(req.body.Interval == 'Every Fourth' && req.body.Time == 'month') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(4, 'month');
+                }
+            }
+            if(req.body.Interval == 'Every Fourth' && req.body.Time == 'year') {
+                let S_date = moment(dates.Start_date);
+                let E_date = moment(dates.End_date);
+                while(S_date <= E_date) {
+                    dateArr.push(moment(S_date).format('YYYY-MM-DD'));
+                    S_date = moment(S_date).add(4, 'years');
+                }
+            }
+            return res.status(Constants.SUCCESS_CODE).send(dateArr);
+        } catch (err) {
+            return res.status(Constants.INTERNAL_SERVER_ERROR_CODE).send({ error: req.t("ERR_INTERNAL_SERVER") });
+        }
+    }
 }

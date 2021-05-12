@@ -15,6 +15,7 @@ router.get('/category', eventController.categoryList);
 //Event API
 router.post('/add',v.validate(EventModel), eventMiddleware.checkDates, eventController.addEvent);
 router.get("/", eventController.listEvent);
+router.post("/view/:id", eventController.viewEvent);
 router.post("/update/:id",eventMiddleware.checkEvent, eventController.updateEvent);
 router.delete("/:id",eventMiddleware.checkEvent, eventController.deleteEvent);
 
